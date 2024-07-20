@@ -16,8 +16,12 @@ public class MascotaService {
 	@Autowired
 	MascotaRepository mascotaRepository;
 	
+	
 	public Optional<Mascota> MostrarMascotaId(Long id){
 		return mascotaRepository.findById(id);
 	}
+	public Optional<Mascota> BuscarMascotaPorNombre(String name) {
+        return mascotaRepository.findByName(name);
+    }
 	
 }
