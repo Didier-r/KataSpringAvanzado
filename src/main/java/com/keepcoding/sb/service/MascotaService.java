@@ -2,6 +2,7 @@ package com.keepcoding.sb.service;
 
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,10 @@ public class MascotaService {
 	public Optional<Mascota> BuscarMascotaPorNombre(String name) {
         return mascotaRepository.findByName(name);
     }
-	
+	public Mascota SubirMascota(Mascota mascota) {
+		return mascotaRepository.save(mascota);
+	}
+	public List<Mascota> MostrarTodasMascotas(){
+		return mascotaRepository.findAll();
+	}
 }
