@@ -23,7 +23,7 @@ public class Mascota {
 	private Date  fechaNac;
 	private String raza;
 	private float peso;
-	private boolean tiene_chip;
+	private boolean has_chip;
 	private String url_foto;
 	
 }
