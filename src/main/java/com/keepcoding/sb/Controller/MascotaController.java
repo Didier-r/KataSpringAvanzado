@@ -39,4 +39,8 @@ public class MascotaController {
 	public List<Mascota> MostrarTodasMascotas(){
 		return mascotaService.MostrarTodasMascotas();
 	}
+	@PostMapping()
+	public List<Mascota> MascotasJovenes(){
+		return mascotaService.MascotasJovenes();
+	}
 }
