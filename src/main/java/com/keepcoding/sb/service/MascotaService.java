@@ -15,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import com.keepcoding.sb.Repository.MascotaRepository;
 import com.keepcoding.sb.entity.Mascota;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class MascotaService {
 
@@ -42,5 +44,11 @@ public class MascotaService {
         return mascotaRepository.findAll(pageable);
     }
 
-	
+	public void eliminarMascota(Long id) {
+        if (mascotaRepository.existsById(id)) {
+            mascotaRepository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException("Mascota no encontrada con el ID: " + id);
+        }
+    }
 }

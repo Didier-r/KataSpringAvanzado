@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.data.domain.Page;
-
-
+import org.springframework.http.ResponseEntity;
 
 import com.keepcoding.sb.entity.Mascota;
 import com.keepcoding.sb.service.MascotaService;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/mascota")
@@ -53,4 +54,13 @@ public class MascotaController {
             @RequestParam(defaultValue = "5") int tamanio) {
         return mascotaService.obtenerMascotasPorPagina(pagina, tamanio);
     }
+	 @DeleteMapping("/{id}")
+	    public ResponseEntity<Void> eliminarMascota(@PathVariable Long id) {
+	        try {
+	            mascotaService.eliminarMascota(id);
+	            return ResponseEntity.noContent().build();
+	        } catch (EntityNotFoundException e) {
+	            return ResponseEntity.notFound().build();
+	        }
+	    }
 }
