@@ -31,8 +31,9 @@ public class MascotaService {
 	public List<Mascota> MostrarTodasMascotas(){
 		return mascotaRepository.findAll();
 	}
-	public List<Mascota> MascotasJovenes(){
-		PageRequest pageRequest = PageRequest.of(0, 10);
-		return mascotaRepository.findMascotaJoven(pageRequest);
-	}
+	public List<Mascota> listar20MascotasMasJovenes() {
+        return mascotaRepository.findTop20ByOrderByFechaNacDesc();
+    }
+	
+	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,8 +40,8 @@ public class MascotaController {
 	public List<Mascota> MostrarTodasMascotas(){
 		return mascotaService.MostrarTodasMascotas();
 	}
-	@PostMapping()
-	public List<Mascota> MascotasJovenes(){
-		return mascotaService.MascotasJovenes();
-	}
+	@GetMapping("/mas-jovenes")
+    public List<Mascota> obtenerMascotasMasJovenes() {
+        return mascotaService.listar20MascotasMasJovenes();
+    }
 }
